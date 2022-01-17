@@ -34,3 +34,12 @@ spring:
           connectiontimeout: 5000
           timeout: 3000
           writetimeout: 5000
+
+jwt:
+  auth:
+    app: Spring-Car-Sales-App
+    secret_key: knutz#secret-key@1234
+    expires_in: 31556952
+
+
+

@@ -1,5 +1,7 @@
 package com.example.carsalesserver.Car;
 
+import com.example.carsalesserver.Ad.Ad;
+import com.example.carsalesserver.Ad.AdRepository;
 import com.example.carsalesserver.Car.utils.EngineType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +14,12 @@ import java.util.Objects;
 public class CarService {
 
     private final CarRepository carRepository;
+    private final AdRepository adRepository;
 
     @Autowired
-    public CarService(CarRepository carRepository) {
+    public CarService(CarRepository carRepository, AdRepository adRepository) {
         this.carRepository = carRepository;
+        this.adRepository = adRepository;
     }
 
     public List<Car> getCars() {
@@ -27,7 +31,11 @@ public class CarService {
 //        if(carOptional.isPresent()) {
 //            throw new IllegalStateException("manufacturer taken");
 //        }
-        carRepository.save(car);
+        Ad ad = new Ad();
+        ad.setCar(car);
+        ad.setDescription("macmac");
+        adRepository.save(ad);
+//        carRepository.save(car);
     }
 
 

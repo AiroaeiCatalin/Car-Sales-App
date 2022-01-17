@@ -3,6 +3,7 @@ package com.example.carsalesserver.registration;
 import com.example.carsalesserver.AppUser.AppUser;
 import com.example.carsalesserver.AppUser.AppUserService;
 import com.example.carsalesserver.AppUser.utils.AppUserRole;
+import com.example.carsalesserver.Wishlist.Wishlist;
 import com.example.carsalesserver.email.EmailSender;
 import com.example.carsalesserver.registration.token.ConfirmationToken;
 import com.example.carsalesserver.registration.token.ConfirmationTokenService;
@@ -29,13 +30,14 @@ public class RegistrationService {
         if(!isValidEmail) {
             throw new IllegalStateException("email not valid");
         }
+//        Wishlist wishlist = new Wishlist();
         String token = appUserService.signUpUser(
                 new AppUser(
                         request.getFirstName(),
                         request.getLastName(),
                         request.getEmail(),
                         request.getPassword(),
-                        AppUserRole.USER
+                        AppUserRole.ROLE_USER
                 )
         );
         String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
@@ -59,12 +61,16 @@ public class RegistrationService {
 
         if (expiredAt.isBefore(LocalDateTime.now())) {
             throw new IllegalStateException("token expired");
+
+
         }
 
         confirmationTokenService.setConfirmedAt(token);
         appUserService.enableAppUser(
                 confirmationToken.getAppUser().getEmail());
-        return "confirmed";
+        return "confirmed" +
+                "</br>" +
+                " <a href=\"http://localhost:3000\">Visit Home page</div>";
     }
 
     private String buildEmail(String name, String link) {

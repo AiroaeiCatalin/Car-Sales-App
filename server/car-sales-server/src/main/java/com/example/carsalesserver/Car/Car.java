@@ -1,7 +1,12 @@
 package com.example.carsalesserver.Car;
 
+import com.example.carsalesserver.Ad.Ad;
 import com.example.carsalesserver.Car.utils.EngineType;
 import com.example.carsalesserver.Car.utils.TransmissionType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -11,25 +16,36 @@ import java.time.Period;
 @Entity
 @Table
 public class Car {
+//    @Id
+//    @SequenceGenerator(
+//            name = "car_sequence",
+//            sequenceName = "car_sequence",
+//            allocationSize = 1
+//    )
+//
+//    @GeneratedValue(
+//            strategy = GenerationType.SEQUENCE,
+//            generator = "car_sequence"
+//    )
+
     @Id
-    @SequenceGenerator(
-            name = "car_sequence",
-            sequenceName = "car_sequence",
-            allocationSize = 1
-    )
-
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "car_sequence"
-    )
-
-
+    @Column(name="car_id")
     private Long id;
     private String manufacturer;
     private String model;
     private Integer price;
     private LocalDate dateOfFabrication;
     private Integer km;
+
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "ad_id")
+//    @JsonIgnore
+
+    @MapsId
+    @OneToOne(mappedBy = "car")
+    @JoinColumn(name = "car_id")
+    private Ad ad;
 
 
     @Transient
@@ -146,6 +162,10 @@ public class Car {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public void setAd(Ad ad) {
+        this.ad = ad;
     }
 
     @Override

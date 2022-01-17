@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -45,6 +46,7 @@ public class AppUserService implements UserDetailsService {
         String encodedPassword = bCryptPasswordEncoder.encode(appUser.getPassword());
 
         appUser.setPassword(encodedPassword);
+//        appUser.setWishlist(appUser.getWishlist());
 
         appUserRepository.save(appUser);
 
@@ -56,14 +58,20 @@ public class AppUserService implements UserDetailsService {
 
         confirmationTokenService.saveConfirmationToken(confirmationToken);
 
-        //TODO: SEND EMAIL
 
         return token;
 
     }
 
-    public int enableAppUser(String email) {
-        return appUserRepository.enableAppUser(email);
+
+//    public int enableAppUser(String email) {
+//        return appUserRepository.enableAppUser(email);
+//    }
+
+    @Transactional
+    public void enableAppUser(String email) {
+       AppUser appUser = appUserRepository.findByEmail(email).orElseThrow(() -> new IllegalStateException("car with id " + email +" does not exist"));;
+       appUser.setEnabled(true);
     }
 
 }

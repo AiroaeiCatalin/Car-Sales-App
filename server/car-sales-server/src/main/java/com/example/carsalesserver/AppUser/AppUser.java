@@ -1,6 +1,9 @@
 package com.example.carsalesserver.AppUser;
 
+import com.example.carsalesserver.Ad.Ad;
 import com.example.carsalesserver.AppUser.utils.AppUserRole;
+import com.example.carsalesserver.Car.Car;
+import com.example.carsalesserver.Wishlist.Wishlist;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 
 @Getter
@@ -37,12 +41,20 @@ public class AppUser implements UserDetails {
     private String lastName;
     private String email;
     private String password;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "appUser", cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Ad> ads;
 //    private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
     private Boolean locked = false;
     private Boolean enabled = false;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Wishlist wishlist;
     //ar mai trb poza de user, detalii user
 
 
@@ -51,6 +63,9 @@ public class AppUser implements UserDetails {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.wishlist = new Wishlist(this);
+
+
 //        this.phoneNumber = phoneNumber;
         this.appUserRole = appUserRole;
     }
@@ -83,6 +98,8 @@ public class AppUser implements UserDetails {
         return lastName;
     }
 
+
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -103,6 +120,8 @@ public class AppUser implements UserDetails {
         return enabled;
     }
 
-
-
+//    public void setWishlist(Wishlist wishlist) {
+//        this.wishlist = wishlist;
+//        this.wishlist.setAppUser(this);
+//    }
 }
