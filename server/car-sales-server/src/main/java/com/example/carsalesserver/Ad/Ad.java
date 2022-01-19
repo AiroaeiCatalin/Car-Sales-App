@@ -49,7 +49,6 @@ public class Ad {
     @PrimaryKeyJoinColumn
     private Car car;
 
-
 //    @Getter(AccessLevel.NONE)
 //    @Setter(AccessLevel.NONE)
 //    @JsonBackReference
@@ -61,6 +60,16 @@ public class Ad {
     @ManyToMany(mappedBy = "ads")
     private Set<Wishlist> wishlists = new HashSet<>();
 
+
+    public Ad(String description, String carImageLink, Car car, AppUser appUser, Set<Wishlist> wishlists) {
+        this.description = description;
+        this.carImageLink = carImageLink;
+        this.car = car;
+        this.appUser = appUser;
+        this.wishlists = wishlists;
+    }
+
+    //Daca pot cumva sa nu schimb getteru, si nici cu json ignore sa fac pt ca vreau totusi sa stiu a carui user e adu din API
     public String getAppUser() {
         return appUser.getEmail();
     }

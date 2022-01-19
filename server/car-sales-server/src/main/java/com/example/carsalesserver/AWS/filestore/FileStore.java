@@ -14,14 +14,15 @@ import java.util.Optional;
 
 
 @Service
+@AllArgsConstructor
 public class FileStore {
 
     private final AmazonS3 s3;
 
-    @Autowired
-    public FileStore(AmazonS3 s3){
-        this.s3 = s3;
-    }
+//    @Autowired
+//    public FileStore(AmazonS3 s3){
+//        this.s3 = s3;
+//    }
 
 
 
@@ -46,8 +47,8 @@ public class FileStore {
     }
 
 //    public void save2(){
-//        String content = new String("blabla");
-//        s3.putObject("car-sales-images-handler-4769", "my-key", content);
+//        String content = new String("cracra");
+//        s3.putObject("car-sales-images-handler-4769", "my-other-key", content);
 //    }
 
 }

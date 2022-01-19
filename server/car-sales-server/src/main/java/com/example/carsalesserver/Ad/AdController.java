@@ -1,8 +1,11 @@
 package com.example.carsalesserver.Ad;
 
 
+import com.example.carsalesserver.AWS.filestore.FileStore;
 import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -21,10 +24,21 @@ public class AdController {
     }
 
     @PostMapping
-    public void registerNewAd(@RequestBody Ad ad) {
-//        System.out.println(ad.getCar());
-        adService.addNewAd(ad);
+    @ResponseBody
+    public Long registerNewAd(@RequestBody Ad ad) {
+        return adService.addNewAd(ad);
+
 //        fileStore.save2();
+    }
+
+    @PostMapping(
+            path = "/{adId}/image/upload",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public void uploadAdImage(@PathVariable("adId") Long adId, @RequestParam("file") MultipartFile file) {
+        System.out.println(adId);
+        adService.uploadAdImage(adId, file);
     }
 
 
