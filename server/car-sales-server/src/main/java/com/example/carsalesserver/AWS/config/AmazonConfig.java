@@ -7,6 +7,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.example.carsalesserver.AWS.utils.AmazonCredentials;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,8 +16,8 @@ public class AmazonConfig {
 
     @Bean
     public AmazonS3 s3() {
-        AWSCredentials awsCredentials = new BasicAWSCredentials("AKIA4S6A5UGF56KBNGHQ",
-                "7v4HRS6MQe+j/5lR27JvA9TLNI85SYb8v0SeoWt6");
+        AWSCredentials awsCredentials = new BasicAWSCredentials(AmazonCredentials.AMAZON_ACCESS_KEY,
+                AmazonCredentials.AMAZON_SECRET_KEY);
 
         return AmazonS3ClientBuilder
                 .standard()
