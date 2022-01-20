@@ -1,0 +1,9 @@
+/* .navbar-bg{
+  background-color: #432dd3 !important;
+} */
+
+.navbar-bg{
+  background-color: #4facfe !important;
+  background-image: linear-gradient(to right, #3e8ed0 0%, #4fd5fe 100%);
+}
+
