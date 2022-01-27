@@ -15,7 +15,7 @@ const Dropzone = ({adResponse}) => {
         const formData = new FormData();
         formData.append("file", file);
 
-        console.log(`http://localhost:8080/api/v1/ad/${adResponse}/image/upload`)
+        // console.log(`http://localhost:8080/api/v1/ad/${adResponse}/image/upload`)
     
         axios.post(`http://localhost:8080/api/v1/ad/${adResponse}/image/upload`, formData,
             {

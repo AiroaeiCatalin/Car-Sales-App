@@ -77,12 +77,12 @@ const Card = ({ad, wishlistOrMyAds}) => {
         // console.log(manufacturer);
     }
 
-        ////cacaat
 
     return (
         <div className="car-item">
             <div className="car-item__img">
-                <img src={carImg} alt="" />
+                {/* <img src={carImg} alt="" /> */}
+                <img src={`http://localhost:8080/api/v1/ad/${adId}/image/download`} alt="" />
             </div>
             <div className="car-item__info">
                 <h1 className="car-item__title">{car.manufacturer} {car.model}</h1>

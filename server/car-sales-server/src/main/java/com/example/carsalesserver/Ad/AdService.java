@@ -53,11 +53,21 @@ public class AdService {
 
         try {
             fileStore.save(path, filename, Optional.of(metadata), file.getInputStream());
+            ad.setCarImageLink(filename);
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }
-
     }
+
+    public byte[] downloadAdImage(Long adId) {
+        Ad ad = getAdOrThrow(adId);
+        String path = String.format("%s/%s-%s-%s", BucketName.PROFILE_IMAGE.getBucketName(),
+                ad.getId(), ad.getCar().getManufacturer(), ad.getCar().getModel());
+       return ad.getCarImageLink()
+                .map(key -> fileStore.download(path, key))
+                .orElse(new byte[0]);
+    }
+
 
     private Map<String, String> extractMetadata(MultipartFile file) {
         Map<String, String> metadata = new HashMap<>();
@@ -84,4 +94,5 @@ public class AdService {
             throw new IllegalStateException("Can't upload an empty file [ " + file.getSize() + "]");
         }
     }
+
 }

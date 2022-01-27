@@ -41,6 +41,10 @@ public class AdController {
         adService.uploadAdImage(adId, file);
     }
 
+    @GetMapping("/{adId}/image/download")
+    public byte[] downloadAdImage(@PathVariable("adId") Long adId){
+        return adService.downloadAdImage(adId);
+    }
 
 
 }
