@@ -104,7 +104,8 @@ All prerequisites must be installed, accordingly to the technologies used in thi
 
 1. Clone the customer repo
    ```sh
-	https://github.com/AiroaeiCatalin/Car-Sales-App   ```
+	https://github.com/AiroaeiCatalin/Car-Sales-App
+    ```
 2. Install NPM packages
    ```sh
    npm install
