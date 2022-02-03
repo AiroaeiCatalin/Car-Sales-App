@@ -104,8 +104,7 @@ All prerequisites must be installed, accordingly to the technologies used in thi
 
 1. Clone the customer repo
    ```sh
-	https://github.com/AiroaeiCatalin/Car-Sales-App
-    ```
+	https://github.com/AiroaeiCatalin/Car-Sales-App   ```
 2. Install NPM packages
    ```sh
    npm install
@@ -121,6 +120,17 @@ All prerequisites must be installed, accordingly to the technologies used in thi
 Further I will shortly name, describe and visualize some main features of the app.
 ### Customer application
 * Customers can create an account, browse, view and filter through various cars
+
+![homepage](https://user-images.githubusercontent.com/37214035/152346294-bd4fdf8b-19c3-42e7-9be5-fce4617b23a2.png)
+
+![homepage2](https://user-images.githubusercontent.com/37214035/152346421-788072ea-bf9c-4c2d-ba80-952669fa356c.png)
+* Customers can filter through cars
+![filter](https://user-images.githubusercontent.com/37214035/152347448-0ee5cae7-2bd1-4ee9-9cd9-b6e1ce86b978.png)
+* Customers can log in, add a new ad, and log out
+![login](https://user-images.githubusercontent.com/37214035/152347806-640ad6ee-96d4-42c9-aa0d-c63fb7ba1a99.png)
+* Customers can add cars to their wishlists
+![wishlist](https://user-images.githubusercontent.com/37214035/152358645-bfd923d5-2e4c-43f5-a223-91f64a23670c.png)
+
 
 
 
