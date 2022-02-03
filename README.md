@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 
 
-  <h3 align="center">Best Auto Deals</h3>
+  <h3 align="center">🚘 Best Auto Deals 🚘</h3>
 
   <p align="center">
     An awesome app to use if you want to buy a car:
