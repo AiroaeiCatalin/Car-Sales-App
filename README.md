@@ -137,7 +137,7 @@ Further I will shortly name, describe and visualize some main features of the ap
 <!-- ROADMAP -->
 ## Roadmap
 
-The project development took place through 8 Agile iterations, each iteration taking 5 days. A short complete roadmap bellow:
+The project development took place through 4 Agile iterations, each iteration taking 5 days. A short complete roadmap bellow:
 
 ![agile-logo](https://user-images.githubusercontent.com/72221647/138440913-f67be820-c3a8-46d2-a35c-1f847acb2c48.png)
 
