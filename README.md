@@ -143,11 +143,9 @@ The project development took place through 8 Agile iterations, each iteration ta
 
 
 * Sprint 1: Created core backend objects, services and controllers 
-* Sprint 2: Started building the UI for customer app
-* Sprint 3: Started styling the UI for customer app
-* Sprint 4: Created the host app frontend
-* Sprint 5: Built more functionalities for each app (customer and host)
-* Sprint 6: Refactored code, fixed various bugs, added CSS styling
+* Sprint 2: Started building the UI for app
+* Sprint 3: Created registration and log in functionalities
+* Sprint 4: Started styling the UI for the app and fixed some bugs
 
 
 <!-- CONTRIBUTING -->
